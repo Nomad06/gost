@@ -11,6 +11,10 @@ public class WordsCounter {
         StringTokenizer tokenizer = new StringTokenizer(text);
         while (tokenizer.hasMoreTokens()){
             word = tokenizer.nextToken();
+            if(!word.matches("[0-9a-zA-zА-Яа-я]*[.,?!;]{1}[0-9a-zA-zА-Яа-я]*")){
+                fill(words, word.trim().toLowerCase());
+                continue;
+            }
             splittedWords = word.split("[.,!?;]");
             for(String str : splittedWords){
                 fill(words, str.trim().toLowerCase());
